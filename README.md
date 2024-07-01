@@ -2,7 +2,7 @@
 
 ## Data Creation
 ### Folders
-`data_generation` - Contains code to create the dataset. \\
+`data_generation` - Contains code to create the dataset. \
 `data` - Stores the data. 
 
 ### Code
