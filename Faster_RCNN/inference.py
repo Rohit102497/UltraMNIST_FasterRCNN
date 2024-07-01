@@ -36,7 +36,7 @@ print(f"Test instances: {len(test_images)}")
 if not os.path.exists(f"/UltraMNIST_FasterRCNN/Faster_RCNN/inference_outputs/images/{file_name}/"):
     os.makedirs(f"/UltraMNIST_FasterRCNN/Faster_RCNN/inference_outputs/images/{file_name}/")
 if not os.path.exists(f"/UltraMNIST_FasterRCNN/Faster_RCNN/inference_outputs/prediction_labels/"):
-    os.makedirs(f"/UltraMNIST_FasterRCNN/Faster_RCNN/inference_outputs/images/prediction_labels/")
+    os.makedirs(f"/UltraMNIST_FasterRCNN/Faster_RCNN/inference_outputs/prediction_labels/")
 
 # define the detection threshold...
 # ... any detection having score below this will be discarded

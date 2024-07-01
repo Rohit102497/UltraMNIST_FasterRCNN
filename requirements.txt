@@ -1,11 +1,9 @@
-# torchvision==0.12.0
 # Base-------------------------------------
 albumentations>=1.1.0
 ipython
 jupyter
 matplotlib
 opencv-python>=4.1.1.26
-# opencv-python-headless>=4.1.1.26
 Pillow
 PyYAML
 scikit-image
@@ -20,4 +18,3 @@ tqdm
 deep-sort-realtime
 gradio==3.50.2
 albumentations==1.1.0
-# torchvision==0.12.0

@@ -1,5 +1,7 @@
 # An UltraMNIST classification benchmark to train CNNs for very large images
 
+This repository contains the experiment corresponding to section **Implications of Noise** in the above paper.
+
 In this repository, we create a 2800 test and train Ultramnist dataset to determine the performance of FasterRCNN as the amount of complexity (noise) increase in the images. Following steps are done for this. 
 1. A noise free dataset of 2800 images for each test and train set is created.
 2. Varying level of noise is added to the above created test set.
@@ -24,6 +26,8 @@ We create the noise free data by:
 ```
 python data_generation/create_ultramnist.py --root_path /data/ --n_samples 2800
 ```
+
+**Note: You might get an error in the cv2.dnn package as AttributeError: module 'cv2.dnn' has no attribute 'DictValue'. If you get that error, please go to the "/usr/local/lib/python3.10/dist-packages/cv2/typing/__init__.py" file and comment that line.**
 
 Here: 
 - `--root_path`: path to the root directory where the generated data will be stored. This is relative to the current directory.
@@ -67,8 +71,6 @@ The default parameters are already set in the `Faster_RCNN/config.py` file, like
 
 Other parameters can also be set in the `Faster_RCNN/train.py` file, like:
 - `lr`: Set learning rate to 0.0001.
-
-**Note:** *You might get an error in the cv2.dnn package as AttributeError: module 'cv2.dnn' has no attribute 'DictValue'. If you get that error, please go to the "/usr/local/lib/python3.10/dist-packages/cv2/typing/__init__.py" file and comment that line.*
 
 Training the model, saves" two 4 files in `Faster_RCNN/outputs`:
 - `best_model.pth`: Contains the trained model based on the best performance on validation set.

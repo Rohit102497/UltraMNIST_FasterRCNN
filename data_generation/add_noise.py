@@ -33,7 +33,7 @@ os.makedirs(npath, exist_ok=True)
 # os.makedirs(os.path.join(npath, "val"), exist_ok=True)
 
 
-trfm = Compose([RandomAffine((-45, 45), scale=(0.8, 1.2), shear=50, resample=3), CenterCrop(2000), Resize(4000)])
+trfm = Compose([RandomAffine((-45, 45), scale=(0.8, 1.2), shear=50), CenterCrop(2000), Resize(4000)])
 
 n_shapes = args.n_shapes
 checker_size = args.checker_size
