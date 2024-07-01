@@ -11,21 +11,23 @@ from torchvision.transforms import RandomAffine, CenterCrop, Compose, Resize
 from joblib import Parallel, delayed
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--root_path", type=str, default="../data/", help="path to the root directory where data is stored")
+ap.add_argument("--root_path", type=str, default="/data/", help="path to the root directory where data is stored")
+ap.add_argument("--dir_name", type=str, default="ultramnist_2800", help="directory name")
 ap.add_argument("--n_shapes", type=int, default=3, help = "number of each kind of (traingle and circle) shapes")
 ap.add_argument("--checker_size", type=int, default=16, help = "size of checkers")
-ap.add_argument("--checker_low", type=int, default=12, help = "minimum size of the checker")
-ap.add_argument("--checker_high", type=int, default=24, help = "maximum size of the checker")
-ap.add_argument("--shapes_high", type=int, default=5, help = "maximum number of each kind (traingle and circle) shapes")
+
+# ap.add_argument("--checker_low", type=int, default=12, help = "minimum size of the checker")
+# ap.add_argument("--checker_high", type=int, default=24, help = "maximum size of the checker")
+# ap.add_argument("--shapes_high", type=int, default=5, help = "maximum number of each kind (traingle and circle) shapes")
 args = ap.parse_args()
 
 # train_img_paths = glob(os.path.join(args.root_path, "ultramnist/train/*/*.jpeg"))
 # valid_img_paths = glob(os.path.join(args.root_path, "ultramnist/val/*/*.jpeg"))
-dir_name = "ultramnist_2800"
-test_img_paths = glob(os.path.join(args.root_path, f"{dir_name}/test/*.jpeg"))
+dir_name = args.dir_name
+test_img_paths = glob(os.path.join(f"{os.getcwd()}{args.root_path}", f"{dir_name}/test/*.jpeg"))
 
 # npath = os.path.join(args.root_path, "ultramnist_noised")
-npath = os.path.join(args.root_path, dir_name)
+npath = os.path.join(f"{os.getcwd()}{args.root_path}", dir_name)
 os.makedirs(npath, exist_ok=True)
 # os.makedirs(os.path.join(npath, "train"), exist_ok=True)
 # os.makedirs(os.path.join(npath, "val"), exist_ok=True)
@@ -35,9 +37,9 @@ trfm = Compose([RandomAffine((-45, 45), scale=(0.8, 1.2), shear=50, resample=3),
 
 n_shapes = args.n_shapes
 checker_size = args.checker_size
-checker_low = args.checker_low
-checker_high = args.checker_high
-shapes_high = args.shapes_high
+checker_low = 12
+checker_high = 24 
+shapes_high = 5
 
 
 os.makedirs(os.path.join(npath, f'test_{n_shapes}_{checker_size}'), exist_ok=True)
